@@ -1,0 +1,100 @@
+•	1.Sách: ( Quản lý thông tin chung của đầu sách)
+•	Thuộc tính: 	+ Masach (PK)
++ TenSach
++ ISBN: mã số tiêu chuẩn quốc tế dành cho sách( k phải sách nào cũng có )
++ NamXuatBan
++ NhaXuatBan
++ NgonNgu
++ SoTrang
++ MoTa
++ MaDanhMuc (FK)
++ MaTacGia (FK)
+•	2.Cuốn sách: Quản lý từng cuốn sách vật lý.
+•	Thuộc tính:	+MaCuon (PK)
++MaSach(FK)
++ TinhTrang (Mới / Cũ / Hỏng / Mất)
++ TrangThai (Có sẵn / Đang mượn)
++ ViTriKe
++ NgayNhap
+•	3.Danh mục: Phân loại sách
+•	Thuộc tính: 	+MaDanhMuc(PK)
++TenDanhMuc
++MoTa
+•	4.Tác giả
+•	Thuộc tính: 	+MaTacGia(PK)
++TenTacGia
++NgaySinh
++QuocTich
++MoTa
+•	5.Người mượn: Quản lý người sử dụng thư viện.
+•	Thuộc tính:	+MaNguoiMuon (PK)
++HoTen
++NgaySinh
++DiaChi
++SoDienThoai
++Email
++LoaiDocGia(Sinh viên/ Giảng viên/ Khách)
++NgayDangKy
++TrangThai(Hoạt động/ Khóa)
+•	6.Nhân viên
+•	Thuộc tính:	+MaNhanVien(PK)
++HoTen
++ChucVu
++SoDienThoai
++Email
++TaiKhoan
++MatKhau
+•	7.Phiếu mượn: Quản lý việc mượn sách.
+•	Thuộc tính: 	+MaPhieuMuon(PK)
++MaNguoiMuon(FK)
++MaNhanVien(FK)
++NgayMuon
++HanTra
++TrangThai(Đang mượn/ đã trả)
+•	8.Chi tiết phiếu mượn
+•	Thuộc tính: 	+MaPhieuMuon(FK)
++MaCuon(FK)
++NgayTra
++TinhTrangTra
++SoNgayTre
+•	9.Tiền phạt
+•	Thuộc tính: 	+MaPhat(Pk)
++MaPhieuMuon(FK)
++SoTienPhat
++LyDo
++TrangThaiThanhToan
+•	10.Thanh toán phạt: 	
+•	Thuộc tính:	+MaThanhToan(PK)
++MaPhat(FK)
++NgayThanhToan
++SoTien
++PhuongThuc
+
+•	1.Danh mục – Sách (1-N)
+•	1 danh mục có nhiều sách
+•	1 Sách thuộc 1 danh mục
+•	-----------------------------------
+•	2.Tác giả - Sách (N-N)
+•	 1 tác giả viết nhiều sách
+•	 1 sách có thể có nhiều tác giả
+•	-----------------------------------
+•	3.Sách – Cuốn sách (1-N)
+•	 1 sách có nhiều cuốn
+•	 1 Cuốn thuộc 1 sách
+•	-----------------------------------
+•	4.Người mượn – Phiếu mượn (1-N)
+•	 1 người mượn có nhiều phiếu mượn
+•	 1 phiếu mượn thuộc 1 người mượn
+•	-----------------------------------
+•	5.Phiếu mượn – Cuốn sách (N-N)
+•	 1 phiếu mượn có nhiều cuốn sách
+•	 1 Cuốn sách chỉ nằm trong 1 Phiếu mượn tại 1 thời điểm
+•	-----------------------------------
+•	6.Phiếu mượn – Tiền phạt (1 – 0..1)
+•	 1 phiếu mượn có thể có hoặc không có tiền phạt
+•	 1 Tiền phạt thuộc 1 phiếu mượn
+•	-----------------------------------
+•	7. Nhân viên – Phiếu mượn(1-N)
+•	1 nhân viên xử lí nhiều phiếu mượn
+•	 1 phiếu mượn được xử lí bởi 1 nhân viên
+•	-----------------------------------
